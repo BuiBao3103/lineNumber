@@ -12,11 +12,12 @@ let generatorLineNumber = (start,end) => {
     span.appendChild(p);
     wrapperContainer.appendChild(span);
   }
+  wrapperContainer.appendChild(document.createElement("span"));
   let spanContainer = document.querySelectorAll("#wrapper span");
   if (spanContainer.length > 1) {
     new LeaderLine(spanContainer[0], spanContainer[spanContainer.length - 1], {
       startPlug: "behind",
-      endPlug: "behind",
+      endPlug: "arrow1",
       color: "rgb(0,0,0)",
       size: 2,
     });
