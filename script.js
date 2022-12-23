@@ -23,6 +23,9 @@ let generatorLineNumber = (start, end) => {
       size: 2,
     });
   }
+  numbers = document.querySelectorAll("#wrapper span");
+  let pos = (1000 / (numbers.length - 1)) * (start * -1) - 25;
+  human.style.transform = "translate(" + pos + "px," + -50 + "px)";
   humanTranslate();
 };
 document.querySelector("#input button").addEventListener("click", () => {
@@ -30,6 +33,10 @@ document.querySelector("#input button").addEventListener("click", () => {
   let end = parseInt(document.querySelector("#end").value);
   if (isNaN(start) || isNaN(end)) {
     alert("Điền đầy đủ Start và End!");
+    return;
+  }
+  if (end < 0 || start > 0) {
+    alert("Trục số phải có giá trị 0!");
     return;
   }
   if (start >= end) {
@@ -43,7 +50,6 @@ document.querySelector("#input button").addEventListener("click", () => {
   generatorLineNumber(start, end);
 });
 humanTranslate = () => {
-  numbers = document.querySelectorAll("#wrapper span");
   // console.log(numbers)
   for (let i = 0; i < numbers.length - 1; i++) {
     numbers[i].addEventListener("click", () => {
