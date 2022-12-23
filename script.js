@@ -34,6 +34,7 @@ let generatorLineNumber = (start, end) => {
     });
   }
   numbers = document.querySelectorAll("#wrapper span");
+  console.log(numbers);
   currentPos = numbers[start * -1];
   let pos = (1000 / (numbers.length - 1)) * (start * -1) - 25;
   human.style.transform = "translate(" + pos + "px," + -50 + "px)";
@@ -75,18 +76,16 @@ humanTranslate = () => {
 };
 
 let humanMove = (end) => {
-  let s = currentPos.childNodes[0].innerHTML;
-  let e = end.childNodes[0].innerHTML;
+  let s = parseInt(currentPos.childNodes[0].innerHTML);
+  let e = parseInt(end.childNodes[0].innerHTML);
   let newLine = new LeaderLine(currentPos.childNodes[1], end.childNodes[1], {
     startPlug: "behind",
-    endPlug: "arrow1",
-    color: "rgb(0,0,255)",
+    endPlug: "arrow",
+    color: s >= e ? "rgb(0,100,255)" : "rgb(255,100,0)",
     size: 2,
-    startSocket: s < e ? "right" : "left",
-    endSocket: s > e ? "right" : "left",
     hide: true,
   });
-  newLine.show("draw");
+  newLine.show();
   line.push(newLine);
 };
 
