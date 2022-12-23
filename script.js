@@ -8,8 +8,10 @@ let generatorLineNumber = (start, end) => {
     let p = document.createElement("p");
     p.innerHTML = i;
     if (i > -1 && i < 10)
-      p.style.transform = "translate(" + -100 + "%," + 25 + "px)";
-    else p.style.transform = "translate(" + -175 + "%," + 25 + "px)";
+      p.style.transform = "translate(" + -4 + "px," + 25 + "px)";
+    else if (i < -9)
+      p.style.transform = "translate(" + -10 + "px," + 25 + "px)";
+    else p.style.transform = "translate(" + -7 + "px," + 25 + "px)";
     span.appendChild(p);
     wrapperContainer.appendChild(span);
   }

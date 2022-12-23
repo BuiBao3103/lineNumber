@@ -65,6 +65,7 @@ a:hover{
 }
 #wrapper span:last-child{
     opacity: 0;
+    cursor: auto;
 }
 #wrapper .human{
     display:  none;
