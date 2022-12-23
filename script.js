@@ -1,12 +1,11 @@
 const wrapperContainer = document.querySelector("#wrapper .container");
 const inputForm = document.querySelector("#input");
 const human = document.querySelector("#wrapper .human");
-const removeBtn = document.querySelector("#remove")
-const newBtn = document.querySelector("#new")
-
+const removeBtn = document.querySelector("#remove");
+const newBtn = document.querySelector("#new");
 let numbers = null;
-let line = null;
-let currentPos  = null
+let line = [];
+let currentPos = null;
 let generatorLineNumber = (start, end) => {
   for (let i = start; i <= end; i++) {
     let span = document.createElement("span");
@@ -35,7 +34,7 @@ let generatorLineNumber = (start, end) => {
     });
   }
   numbers = document.querySelectorAll("#wrapper span");
-  currentPos = numbers[start*-1]
+  currentPos = numbers[start * -1];
   let pos = (1000 / (numbers.length - 1)) * (start * -1) - 25;
   human.style.transform = "translate(" + pos + "px," + -50 + "px)";
   humanTranslate();
@@ -70,13 +69,13 @@ humanTranslate = () => {
       let pos = (1000 / (numbers.length - 1)) * i - 25;
       human.style.transform = "translate(" + pos + "px," + -50 + "px)";
       humanMove(numbers[i].childNodes[1]);
-      currentPos = numbers[i]
+      currentPos = numbers[i];
     });
   }
 };
 
 let humanMove = (end) => {
-  line = new LeaderLine(currentPos.childNodes[1], end, {
+  let newLine = new LeaderLine(currentPos.childNodes[1], end, {
     startPlug: "behind",
     endPlug: "arrow1",
     color: "rgb(0,0,255)",
@@ -85,13 +84,18 @@ let humanMove = (end) => {
     endSocket: "left",
     hide: true,
   });
-  line.show("draw");
+  newLine.show("draw");
+  line.push(newLine);
 };
 
-removeBtn.addEventListener("click", ()=>{
+removeBtn.addEventListener("click", () => {
+  currentPos = numbers[0]
+  let pos = (1000 / (numbers.length - 1)) * (currentPos.childNodes[0].innerHTML * -1) - 25;
+  human.style.transform = "translate(" + pos + "px," + -50 + "px)";
+  line.forEach(l => l.remove())
+  line = []
+});
 
-})
-
-newBtn.addEventListener("click", ()=>{
+newBtn.addEventListener("click", () => {
   location.reload();
-})
+});
