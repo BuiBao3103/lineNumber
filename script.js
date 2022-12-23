@@ -2,6 +2,8 @@ const wrapperContainer = document.querySelector("#wrapper .container");
 const inputForm = document.querySelector("#input");
 const human = document.querySelector("#wrapper .human");
 let numbers = null;
+let line = null;
+let currentPos  = null
 let generatorLineNumber = (start, end) => {
   for (let i = start; i <= end; i++) {
     let span = document.createElement("span");
@@ -13,6 +15,10 @@ let generatorLineNumber = (start, end) => {
       p.style.transform = "translate(" + -10 + "px," + 25 + "px)";
     else p.style.transform = "translate(" + -7 + "px," + 25 + "px)";
     span.appendChild(p);
+    let p2 = document.createElement("p");
+    p2.style.transform = "translateY(" + -25 + "px)";
+    span.appendChild(p2);
+
     wrapperContainer.appendChild(span);
   }
   wrapperContainer.appendChild(document.createElement("span"));
@@ -26,6 +32,7 @@ let generatorLineNumber = (start, end) => {
     });
   }
   numbers = document.querySelectorAll("#wrapper span");
+  currentPos = numbers[start*-1]
   let pos = (1000 / (numbers.length - 1)) * (start * -1) - 25;
   human.style.transform = "translate(" + pos + "px," + -50 + "px)";
   humanTranslate();
@@ -55,11 +62,23 @@ humanTranslate = () => {
   // console.log(numbers)
   for (let i = 0; i < numbers.length - 1; i++) {
     numbers[i].addEventListener("click", () => {
-      console.log(numbers.length - 1);
       let pos = (1000 / (numbers.length - 1)) * i - 25;
       human.style.transform = "translate(" + pos + "px," + -50 + "px)";
+      humanMove(numbers[i].childNodes[1]);
+      currentPos = numbers[i]
     });
   }
 };
 
-// generatorLineNumber();
+let humanMove = (end) => {
+  line = new LeaderLine(currentPos.childNodes[1], end, {
+    startPlug: "behind",
+    endPlug: "arrow1",
+    color: "rgb(0,0,255)",
+    size: 2,
+    startSocket: "right",
+    endSocket: "left",
+    hide: true,
+  });
+  line.show("draw");
+};
