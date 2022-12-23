@@ -68,20 +68,22 @@ humanTranslate = () => {
     numbers[i].addEventListener("click", () => {
       let pos = (1000 / (numbers.length - 1)) * i - 25;
       human.style.transform = "translate(" + pos + "px," + -50 + "px)";
-      humanMove(numbers[i].childNodes[1]);
+      humanMove(numbers[i]);
       currentPos = numbers[i];
     });
   }
 };
 
-let humanMove = (end) => {d
-  let newLine = new LeaderLine(currentPos.childNodes[1], end, {
+let humanMove = (end) => {
+  let s = currentPos.childNodes[0].innerHTML;
+  let e = end.childNodes[0].innerHTML;
+  let newLine = new LeaderLine(currentPos.childNodes[1], end.childNodes[1], {
     startPlug: "behind",
     endPlug: "arrow1",
     color: "rgb(0,0,255)",
     size: 2,
-    startSocket: "right",
-    endSocket: "left",
+    startSocket: s < e ? "right" : "left",
+    endSocket: s > e ? "right" : "left",
     hide: true,
   });
   newLine.show("draw");
@@ -89,7 +91,7 @@ let humanMove = (end) => {d
 };
 
 removeBtn.addEventListener("click", () => {
-  currentPos = numbers[numbers[0].childNodes[0].innerHTML*-1]
+  currentPos = numbers[numbers[0].childNodes[0].innerHTML * -1];
   let pos =
     (1000 / (numbers.length - 1)) * (numbers[0].childNodes[0].innerHTML * -1) -
     25;
