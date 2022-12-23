@@ -26,12 +26,14 @@ let generatorLineNumber = (start, end) => {
   wrapperContainer.appendChild(document.createElement("span"));
   let spanContainer = document.querySelectorAll("#wrapper span");
   if (spanContainer.length > 1) {
-    new LeaderLine(spanContainer[0], spanContainer[spanContainer.length - 1], {
+    let lineNumber = new LeaderLine(spanContainer[0], spanContainer[spanContainer.length - 1], {
       startPlug: "behind",
       endPlug: "arrow1",
       color: "rgb(0,0,0)",
       size: 2,
+      hide: true
     });
+    lineNumber.show("draw")
   }
   numbers = document.querySelectorAll("#wrapper span");
   console.log(numbers);
@@ -85,7 +87,7 @@ let humanMove = (end) => {
     size: 2,
     hide: true,
   });
-  newLine.show();
+  newLine.show("draw");
   line.push(newLine);
 };
 
