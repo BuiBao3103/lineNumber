@@ -12,6 +12,7 @@ a:hover{
 }
 #input{
     position: fixed;
+    z-index: 1000;
     top:0;
     right: 0;
     bottom: 0;
@@ -46,17 +47,32 @@ a:hover{
     align-items: center;
 }
 #wrapper .container{
+    position: relative;
     width: 1000px;
+    height: 200px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     user-select: none;
 }
 #wrapper span{
     display: block;
     width: 2px;
     height: 20px;
+    padding: 2px;
+    cursor: pointer;
     background-color: black;
 }
 #wrapper span:last-child{
     opacity: 0;
+}
+#wrapper .human{
+    display:  none;
+    position: absolute;
+    width: 50px;
+    transform: translate(-100px, -50px);
+    transition: transform 1s;
+}
+img{
+    width: 100%;
 }
