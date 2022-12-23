@@ -1,0 +1,59 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: blue;
+}
+#input{
+    position: fixed;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#input .container{
+    padding: 20px;
+    border: 1px black solid;
+    border-radius: 5px;
+}
+#input .create{
+    text-align: center;
+}
+#input .create button{
+    padding: 2px;
+    width: 50%;
+}
+#input .contact{
+    text-align: right;
+}
+#input .container > *{
+    margin-top: 10px;
+}
+#wrapper{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#wrapper .container{
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+}
+span{
+    display: block;
+    width: 2px;
+    height: 20px;
+    background-color: black;
+}
