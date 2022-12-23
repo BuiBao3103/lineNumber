@@ -74,7 +74,7 @@ humanTranslate = () => {
   }
 };
 
-let humanMove = (end) => {
+let humanMove = (end) => {d
   let newLine = new LeaderLine(currentPos.childNodes[1], end, {
     startPlug: "behind",
     endPlug: "arrow1",
@@ -89,11 +89,13 @@ let humanMove = (end) => {
 };
 
 removeBtn.addEventListener("click", () => {
-  currentPos = numbers[0]
-  let pos = (1000 / (numbers.length - 1)) * (currentPos.childNodes[0].innerHTML * -1) - 25;
+  currentPos = numbers[numbers[0].childNodes[0].innerHTML*-1]
+  let pos =
+    (1000 / (numbers.length - 1)) * (numbers[0].childNodes[0].innerHTML * -1) -
+    25;
   human.style.transform = "translate(" + pos + "px," + -50 + "px)";
-  line.forEach(l => l.remove())
-  line = []
+  line.forEach((l) => l.remove());
+  line = [];
 });
 
 newBtn.addEventListener("click", () => {
