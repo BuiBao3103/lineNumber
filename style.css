@@ -15,11 +15,13 @@ a:hover{
     top:200px;
     right: 200px;
     cursor: pointer;
+    user-select: none;
 
 }
 #replay i{
     transition: transform 0.5s;
     margin-left: 2px;
+    display: none;
 }
 #replay i:hover{
     transform: scale(1.2);

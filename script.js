@@ -1,6 +1,9 @@
 const wrapperContainer = document.querySelector("#wrapper .container");
 const inputForm = document.querySelector("#input");
 const human = document.querySelector("#wrapper .human");
+const removeBtn = document.querySelector("#remove")
+const newBtn = document.querySelector("#new")
+
 let numbers = null;
 let line = null;
 let currentPos  = null
@@ -45,7 +48,7 @@ document.querySelector("#input button").addEventListener("click", () => {
     return;
   }
   if (end < 0 || start > 0) {
-    alert("Trục số phải có giá trị 0!");
+    alert("Trục số phải chứa giá trị 0!");
     return;
   }
   if (start >= end) {
@@ -55,6 +58,8 @@ document.querySelector("#input button").addEventListener("click", () => {
     return;
   }
   human.style.display = "block";
+  removeBtn.style.display = "inline-block";
+  newBtn.style.display = "inline-block";
   inputForm.style.display = "none";
   generatorLineNumber(start, end);
 });
@@ -82,3 +87,11 @@ let humanMove = (end) => {
   });
   line.show("draw");
 };
+
+removeBtn.addEventListener("click", ()=>{
+
+})
+
+newBtn.addEventListener("click", ()=>{
+  location.reload();
+})
