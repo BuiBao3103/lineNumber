@@ -10,6 +10,20 @@ a{
 a:hover{
     color: blue;
 }
+#replay{
+    position: fixed;
+    top:200px;
+    right: 200px;
+    cursor: pointer;
+
+}
+#replay i{
+    transition: transform 0.5s;
+    margin-left: 2px;
+}
+#replay i:hover{
+    transform: scale(1.2);
+}
 #input{
     position: fixed;
     z-index: 1000;
