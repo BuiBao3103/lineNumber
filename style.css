@@ -11,9 +11,9 @@ a:hover{
     color: blue;
 }
 #replay{
-    position: fixed;
-    top:200px;
-    right: 200px;
+    position: absolute;
+    top:0;
+    right: 0;
     cursor: pointer;
     user-select: none;
 
@@ -64,8 +64,8 @@ a:hover{
 }
 #wrapper .container{
     position: relative;
-    width: 1000px;
-    height: 200px;
+    width: 90%;
+    height: 500px;
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -3,6 +3,7 @@ const inputForm = document.querySelector("#input");
 const human = document.querySelector("#wrapper .human");
 const removeBtn = document.querySelector("#remove");
 const newBtn = document.querySelector("#new");
+const width = wrapperContainer.offsetWidth;
 let numbers = null;
 let line = [];
 let currentPos = null;
@@ -26,19 +27,23 @@ let generatorLineNumber = (start, end) => {
   wrapperContainer.appendChild(document.createElement("span"));
   let spanContainer = document.querySelectorAll("#wrapper span");
   if (spanContainer.length > 1) {
-    let lineNumber = new LeaderLine(spanContainer[0], spanContainer[spanContainer.length - 1], {
-      startPlug: "behind",
-      endPlug: "arrow1",
-      color: "rgb(0,0,0)",
-      size: 2,
-      hide: true
-    });
-    lineNumber.show("draw")
+    let lineNumber = new LeaderLine(
+      spanContainer[0],
+      spanContainer[spanContainer.length - 1],
+      {
+        startPlug: "behind",
+        endPlug: "arrow1",
+        color: "rgb(0,0,0)",
+        size: 2,
+        hide: true,
+      }
+    );
+    lineNumber.show("draw");
   }
   numbers = document.querySelectorAll("#wrapper span");
   console.log(numbers);
   currentPos = numbers[start * -1];
-  let pos = (1000 / (numbers.length - 1)) * (start * -1) - 25;
+  let pos = (width / (numbers.length - 1)) * (start * -1) - 25;
   human.style.transform = "translate(" + pos + "px," + -50 + "px)";
   humanTranslate();
 };
@@ -69,7 +74,7 @@ humanTranslate = () => {
   // console.log(numbers)
   for (let i = 0; i < numbers.length - 1; i++) {
     numbers[i].addEventListener("click", () => {
-      let pos = (1000 / (numbers.length - 1)) * i - 25;
+      let pos = (width / (numbers.length - 1)) * i - 25;
       human.style.transform = "translate(" + pos + "px," + -50 + "px)";
       humanMove(numbers[i]);
       currentPos = numbers[i];
@@ -94,7 +99,7 @@ let humanMove = (end) => {
 removeBtn.addEventListener("click", () => {
   currentPos = numbers[numbers[0].childNodes[0].innerHTML * -1];
   let pos =
-    (1000 / (numbers.length - 1)) * (numbers[0].childNodes[0].innerHTML * -1) -
+    (width / (numbers.length - 1)) * (numbers[0].childNodes[0].innerHTML * -1) -
     25;
   human.style.transform = "translate(" + pos + "px," + -50 + "px)";
   line.forEach((l) => l.remove());
