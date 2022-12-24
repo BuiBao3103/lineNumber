@@ -65,7 +65,7 @@ a:hover{
 #wrapper .container{
     position: relative;
     width: 90%;
-    height: 500px;
+    height: 300px;
     display: flex;
     justify-content: space-between;
     align-items: center;
